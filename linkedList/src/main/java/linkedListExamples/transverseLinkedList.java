@@ -1,6 +1,6 @@
 package linkedListExamples;
 
-public class linkedList {
+public class transverseLinkedList {
     private Node createList(){
         Node n1 = new Node(1);
         Node n2 = new Node(2);
@@ -21,8 +21,8 @@ public class linkedList {
         }
     }
 
-    public static void main (String args){
-        linkedList l1= new linkedList();
+    public static void main (String []args){
+        transverseLinkedList l1= new transverseLinkedList();
         Node nList = l1.createList();
         l1.printList(nList);
     }
