@@ -12,18 +12,22 @@ public class transverseLinkedList {
         return n1;
     }
 
-    private void printList(Node nList){
+    private int printList(Node nList){
         Node currentNode;
+        int length = 0;
         currentNode = nList;
         while (currentNode != null){
+            length++;
             System.out.println(currentNode.getData());
             currentNode=currentNode.getNextNode();
         }
+        return length;
     }
 
     public static void main (String []args){
         transverseLinkedList l1= new transverseLinkedList();
         Node nList = l1.createList();
-        l1.printList(nList);
+        int lenOfList = l1.printList(nList);
+        System.out.println("length of list is : "+lenOfList);
     }
 }
