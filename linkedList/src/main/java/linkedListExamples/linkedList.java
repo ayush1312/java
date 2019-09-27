@@ -26,6 +26,14 @@ public class linkedList {
         printNode(list);
     }
 
+    public void addMidNode(Node nNode,int position){
+        Node midnode = findNthNode(list,position);
+        nNode.setNextNode(midnode.getNextNode());
+        midnode.setNextNode(nNode);
+        list=midnode;
+        printNode(list);
+    }
+
     public Node findLastNode(Node nNode){
         Node lastNode=nNode;
         Node currNode=nNode;
@@ -34,6 +42,21 @@ public class linkedList {
              currNode=currNode.getNextNode();
          }
         return lastNode;
+    }
+
+    public Node findNthNode(Node nNode,int position){
+        Node currNode=nNode;
+        if (position>length) position = length;
+        if (position<0) position=0;
+        int currposition =0;
+        while(currNode !=null){
+            if(currposition==position){
+                return currNode;
+            }
+            currposition++;
+            currNode=currNode.getNextNode();
+        }
+        return new Node(999);
     }
 
     public void printNode(Node nNode){
@@ -47,8 +70,10 @@ public class linkedList {
     public static void main(String []args){
         Node n1 = new Node (10);
         Node n2 = new Node (100);
+        Node n3 = new Node (50);
         linkedList newList = new linkedList();
-        newList.addStartNode(n1);
-        newList.addEndNode(n2);
+        //newList.addStartNode(n1);
+        //newList.addEndNode(n2);
+        newList.addMidNode(n3,1);
     }
 }
