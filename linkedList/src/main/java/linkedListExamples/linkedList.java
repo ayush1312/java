@@ -34,6 +34,27 @@ public class linkedList {
         printNode(list);
     }
 
+    public void removeFirstNode(){
+        Node currNode;
+        currNode=list;
+        if (currNode != null){
+            list=currNode.getNextNode();
+            currNode.setNextNode(null);
+            printNode(list);
+        }
+
+    }
+
+    public void removeLastNode(){
+        Node tmp = list;
+        while (tmp.getNextNode().getNextNode() != null){
+            tmp=tmp.getNextNode();
+        }
+        tmp.setNextNode(null);
+        printNode(list);
+
+    }
+
     public Node findLastNode(Node nNode){
         Node lastNode=nNode;
         Node currNode=nNode;
@@ -74,6 +95,8 @@ public class linkedList {
         linkedList newList = new linkedList();
         //newList.addStartNode(n1);
         //newList.addEndNode(n2);
-        newList.addMidNode(n3,1);
+        //newList.addMidNode(n3,1);
+        //newList.removeFirstNode();
+        newList.removeLastNode();
     }
 }
