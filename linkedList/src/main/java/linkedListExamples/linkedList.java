@@ -55,6 +55,12 @@ public class linkedList {
 
     }
 
+    public void removeNthNode(int position){
+        Node nthNode=findNthNode(list,position-1);
+        nthNode.setNextNode(nthNode.getNextNode().getNextNode());
+        printNode(nthNode);
+    }
+
     public Node findLastNode(Node nNode){
         Node lastNode=nNode;
         Node currNode=nNode;
@@ -97,6 +103,7 @@ public class linkedList {
         //newList.addEndNode(n2);
         //newList.addMidNode(n3,1);
         //newList.removeFirstNode();
-        newList.removeLastNode();
+        //newList.removeLastNode();
+        newList.removeNthNode(1);
     }
 }
