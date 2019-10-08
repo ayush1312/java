@@ -5,7 +5,23 @@ public class circularList {
     private Integer length = 0;
     private Node tail;
 
-     void addStartNode(Integer data){
+    public Integer getLength() {
+        return length;
+    }
+
+    public void setLength(Integer length) {
+        this.length = length;
+    }
+
+    public Node getTail() {
+        return tail;
+    }
+
+    public void setTail(Node tail) {
+        this.tail = tail;
+    }
+
+    void addStartNode(Integer data){
         Node tmp = new Node(data);
         if (tail == null){
             tail=tmp;

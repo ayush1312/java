@@ -4,8 +4,23 @@ public class linkedList {
    private Integer length = 0;
    private Node head;
 
+    public Integer getLength() {
+        return length;
+    }
 
-     void addStartNode(Integer data){
+    public void setLength(Integer length) {
+        this.length = length;
+    }
+
+    public Node getHead() {
+        return head;
+    }
+
+    public void setHead(Node head) {
+        this.head = head;
+    }
+
+    void addStartNode(Integer data){
         
         Node tmp = new Node(data);
         if (head == null){
@@ -31,6 +46,19 @@ public class linkedList {
         //printNode(head);
     }
 
+    void addEndNode(Node nNode){
+
+       // Node tmp = new Node(data);
+        if(head == null){
+            head = nNode;
+        }else {
+            Node lastNode = findLastNode(head);
+            lastNode.setNextNode(nNode);
+        }
+        length++;
+        //printNode(head);
+    }
+
      void addMidNode(Integer data,Integer position){
         Node tmp = new Node(data);
         if (head == null){
@@ -41,6 +69,7 @@ public class linkedList {
             midnode.setNextNode(tmp);
         }
         //printNode(head);
+         length++;
     }
 
      void removeFirstNode(){
@@ -51,7 +80,7 @@ public class linkedList {
             currNode.setNextNode(null);
             //printNode(head);
         }
-
+       length--;
     }
 
      void removeLastNode(){
@@ -61,13 +90,14 @@ public class linkedList {
         }
         tmp.setNextNode(null);
         //printNode(head);
-
+        length--;
     }
 
      void removeNthNode(Integer position){
         Node midnode = findNthNode(head,position);
         midnode.setNextNode(midnode.getNextNode().getNextNode());
         //printNode(head);
+         length--;
     }
 
      private Node findLastNode(Node nNode){
@@ -80,7 +110,7 @@ public class linkedList {
         return lastNode;
     }
 
-      private Node findNthNode(Node nNode,Integer position){
+      public Node findNthNode(Node nNode,Integer position){
         Node currNode=nNode;
         Node tmp = null;
         if (position>length) position = length;
@@ -94,7 +124,7 @@ public class linkedList {
             tmp=currNode;
             currNode=currNode.getNextNode();
         }
-        return new Node(999);
+        return tmp;
     }
 
      void printList(){
