@@ -21,6 +21,8 @@ public class checkLoopinLinkedList {
         //newList.printList();
         checkLoopinLinkedList cll=new checkLoopinLinkedList();
         cll.findLoop(newList);
+        newList.printList();
+
     }
 
     private void findLoop(linkedList ll){
@@ -38,8 +40,20 @@ public class checkLoopinLinkedList {
         }
         if (loopFound){
             System.out.println("loop found");
+            removeLoop(oneStep,ll.getHead());
         }else{
             System.out.println("loop not found");
         }
+    }
+
+    private void removeLoop(Node curr,Node head){
+        Node tmp = head;
+        Node loopDetect=curr;
+        while(tmp!=curr){
+            loopDetect=curr;
+            tmp=tmp.getNextNode();
+            curr=curr.getNextNode();
+        }
+        loopDetect.setNextNode(null);
     }
 }
