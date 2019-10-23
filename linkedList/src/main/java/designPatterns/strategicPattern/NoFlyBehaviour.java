@@ -1,4 +1,4 @@
-package designPatterns.testExample;
+package designPatterns.strategicPattern;
 
 public class NoFlyBehaviour implements FlyBehaviour{
     @Override
