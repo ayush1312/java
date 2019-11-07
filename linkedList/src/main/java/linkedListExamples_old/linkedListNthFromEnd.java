@@ -1,4 +1,4 @@
-package linkedListExamples;
+package linkedListExamples_old;
 
 public class linkedListNthFromEnd {
     public static void main (String [] args){
