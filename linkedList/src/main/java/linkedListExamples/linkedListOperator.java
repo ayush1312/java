@@ -1,4 +1,4 @@
-package linkedListExamples_old;
+package linkedListExamples;
 
 public class linkedListOperator {
 

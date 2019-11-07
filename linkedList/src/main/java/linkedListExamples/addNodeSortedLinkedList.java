@@ -1,4 +1,4 @@
-package linkedListExamples_old;
+package linkedListExamples;
 
 public class addNodeSortedLinkedList {
     public static void main (String [] args){
