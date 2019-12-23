@@ -1,10 +1,5 @@
 package linkedListRevisited;
 
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
-
 public class LinkedList {
        Node head = null;
 
@@ -26,6 +21,7 @@ public class LinkedList {
                curr.next=previous;
                previous=curr;
                head=head.next;
+
            }
            head=curr;
        }
