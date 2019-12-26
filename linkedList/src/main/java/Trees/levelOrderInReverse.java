@@ -21,6 +21,75 @@ public class levelOrderInReverse {
         }
     }
 
+    public void depthOfTree(BinaryTreeNode btn){
+        Stack<BinaryTreeNode> stk = new Stack<>();
+        stk.push(btn);
+        BinaryTreeNode prev = null;
+        int maxDepth =0;
+        while(!stk.isEmpty()){
+            BinaryTreeNode curr = stk.peek();
+            if (prev == null || prev.rightPointer == curr || prev.leftPointer == curr) {
+                if(curr.leftPointer != null)  stk.push(curr.leftPointer);
+                else if (curr.rightPointer != null) stk.push(curr.rightPointer);
+            }else if(curr.leftPointer == prev) {
+                if (curr.rightPointer != null) stk.push(curr.rightPointer);
+            }else{
+                stk.pop();
+            }
+            prev = curr;
+            if (stk.size()>maxDepth) maxDepth = stk.size();
+        }
+        System.out.println(maxDepth);
+    }
+
+    public void depthOfTree2(BinaryTreeNode btn){
+        Queue<BinaryTreeNode> q = new LinkedList<>();
+        q.offer(btn);
+        q.offer(null);
+        int cnt = 1;
+        while(!q.isEmpty()){
+            BinaryTreeNode tmp = q.poll();
+            if(tmp !=null) {
+                if (tmp.leftPointer == null && tmp.rightPointer == null)
+                    break;
+                if (tmp.leftPointer != null) q.offer(tmp.leftPointer);
+                if (tmp.rightPointer != null) q.offer(tmp.rightPointer);
+            }else{
+                if(!q.isEmpty()) {
+                    cnt++;
+                    q.offer(null);
+                }
+            }
+        }
+        System.out.println(cnt);
+    }
+
+    public void noOfLeafNode(BinaryTreeNode btn){
+        Queue<BinaryTreeNode> q = new LinkedList<>();
+        int cnt = 0;
+        q.offer(btn);
+        while (!q.isEmpty()){
+            BinaryTreeNode tmp =q.poll();
+            if(tmp.rightPointer == null && tmp.leftPointer == null) cnt++;
+            if (tmp.rightPointer != null) q.offer(tmp.rightPointer);
+            if (tmp.leftPointer != null) q.offer(tmp.leftPointer);
+        }
+        System.out.println(cnt);
+    }
+
+    public void noOfFullNode(BinaryTreeNode btn){
+        Queue<BinaryTreeNode> q = new LinkedList<>();
+        int cnt = 0;
+        q.offer(btn);
+        while (!q.isEmpty()){
+            BinaryTreeNode tmp =q.poll();
+            if(tmp.rightPointer != null && tmp.leftPointer != null) cnt++;
+            if (tmp.rightPointer != null) q.offer(tmp.rightPointer);
+            if (tmp.leftPointer != null) q.offer(tmp.leftPointer);
+        }
+        System.out.println(cnt);
+    }
+
     public static void main(String []args){
         levelOrderInReverse lr = new levelOrderInReverse();
         BinaryTreeNode btn = new BinaryTreeNode(1);
@@ -36,6 +105,10 @@ public class levelOrderInReverse {
         btn2.rightPointer = btn6;
         btn.leftPointer = btn1;
         btn.rightPointer = btn2;
-        lr.reverseLevelTree(btn);
+        //lr.reverseLevelTree(btn);
+        //lr.depthOfTree(btn);
+        //lr.depthOfTree2(btn);
+        lr.noOfLeafNode(btn);
+        lr.noOfFullNode(btn);
     }
 }
