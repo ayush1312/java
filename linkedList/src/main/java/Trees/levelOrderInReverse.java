@@ -90,6 +90,27 @@ public class levelOrderInReverse {
         System.out.println(cnt);
     }
 
+    public void maxSumAtLevel(BinaryTreeNode btn){
+        Queue<BinaryTreeNode> q = new LinkedList<>();
+        int sumAtLevel = 0;
+        int maxSum = 0;
+        q.offer(btn);
+        q.offer(null);
+        while(!q.isEmpty()){
+            BinaryTreeNode tmp = q.poll();
+            if (tmp != null){
+                if (tmp.leftPointer != null) q.offer(tmp.leftPointer);
+                if (tmp.rightPointer != null) q.offer(tmp.rightPointer);
+                sumAtLevel += tmp.data;
+            }else {
+                if(maxSum<sumAtLevel) maxSum = sumAtLevel;
+                sumAtLevel = 0;
+                if(!q.isEmpty()) q.offer(null);
+            }
+        }
+        System.out.println(maxSum);
+    }
+
     public static void main(String []args){
         levelOrderInReverse lr = new levelOrderInReverse();
         BinaryTreeNode btn = new BinaryTreeNode(1);
@@ -108,7 +129,8 @@ public class levelOrderInReverse {
         //lr.reverseLevelTree(btn);
         //lr.depthOfTree(btn);
         //lr.depthOfTree2(btn);
-        lr.noOfLeafNode(btn);
-        lr.noOfFullNode(btn);
+        //lr.noOfLeafNode(btn);
+        //lr.noOfFullNode(btn);
+        lr.maxSumAtLevel(btn);
     }
 }
