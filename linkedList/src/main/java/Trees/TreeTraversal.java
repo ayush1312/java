@@ -1,5 +1,8 @@
 package Trees;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 public class TreeTraversal {
@@ -58,6 +61,36 @@ public class TreeTraversal {
         }
     }
 
+    public void zigZag(BinaryTreeNode btn){
+        Boolean leftToRight=false;
+        ArrayList<Integer> curr = new ArrayList<>();
+        Queue<BinaryTreeNode> q = new LinkedList<>();
+        q.offer(btn);
+        q.offer(null);
+        while(!q.isEmpty()){
+            BinaryTreeNode tmp = q.poll();
+            if (tmp != null){
+                curr.add(tmp.data);
+                if (tmp.leftPointer != null) q.offer(tmp.leftPointer);
+                if (tmp.rightPointer != null) q.offer(tmp.rightPointer);
+            }else{
+                leftToRight = !leftToRight;
+                if(!q.isEmpty()) q.offer(null);
+                if(leftToRight){
+                    for(int i = 0;i<curr.size();i++)
+                        System.out.println(curr.get(i));
+                }else{
+                    Stack<Integer> stk = new Stack<>();
+                    for(int i = 0;i<curr.size();i++)
+                        stk.push(curr.get(i));
+                    while(!stk.isEmpty())
+                        System.out.println(stk.pop());
+                }
+                curr.clear();
+            }
+        }
+    }
+
     public static void main(String []args){
         TreeTraversal pot = new TreeTraversal();
         BinaryTreeNode btn = new BinaryTreeNode(1);
@@ -75,6 +108,7 @@ public class TreeTraversal {
         btn.rightPointer = btn2;
         //pot.preOrder(btn);
         //pot.inOrder(btn);
-        pot.postOrder(btn);
+        //pot.postOrder(btn);
+        pot.zigZag(btn);
     }
 }
