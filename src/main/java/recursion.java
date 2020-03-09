@@ -1,5 +1,3 @@
-import sun.security.x509.OtherName;
-
 public class recursion {
     public int Print(int n){
         if (n == 0) return 0;

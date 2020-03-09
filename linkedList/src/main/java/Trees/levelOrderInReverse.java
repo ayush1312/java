@@ -111,6 +111,41 @@ public class levelOrderInReverse {
         System.out.println(maxSum);
     }
 
+    public void sumAtLevel(BinaryTreeNode btn){
+        Queue<BinaryTreeNode> q = new LinkedList<>();
+        q.offer(btn);
+        q.offer(null);
+        int sum=0;
+        int lvl = 1;
+        while(!q.isEmpty()){
+            BinaryTreeNode tmp =q.poll();
+            if (tmp!=null){
+                if (tmp.leftPointer != null) q.offer(tmp.leftPointer);
+                if(tmp.rightPointer != null) q.offer(tmp.rightPointer);
+                sum += tmp.data;
+            }else{
+                System.out.println("at level "+lvl+" sum is "+sum);
+                if(!q.isEmpty()){
+                    lvl++;
+                    sum=0;
+                    q.offer(null);
+                }
+            }
+        }
+    }
+
+    public void printLeafElement(BinaryTreeNode btn){
+        Queue<BinaryTreeNode> q = new LinkedList<>();
+        q.offer(btn);
+        while(!q.isEmpty()){
+            BinaryTreeNode tmp = q.poll();
+            if(tmp.rightPointer==null && tmp.leftPointer ==null)
+                System.out.println(tmp.data);
+            if(tmp.rightPointer!=null) q.offer(tmp.rightPointer);
+            if(tmp.leftPointer !=null) q.offer(tmp.leftPointer);
+        }
+    }
+
     public static void main(String []args){
         levelOrderInReverse lr = new levelOrderInReverse();
         BinaryTreeNode btn = new BinaryTreeNode(1);
@@ -131,6 +166,8 @@ public class levelOrderInReverse {
         //lr.depthOfTree2(btn);
         //lr.noOfLeafNode(btn);
         //lr.noOfFullNode(btn);
-        lr.maxSumAtLevel(btn);
+        //lr.maxSumAtLevel(btn);
+        //lr.sumAtLevel(btn);
+        lr.printLeafElement(btn);
     }
 }
