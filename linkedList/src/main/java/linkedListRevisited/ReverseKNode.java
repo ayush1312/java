@@ -31,7 +31,7 @@ public class ReverseKNode {
         ll.addNode(2);
         ll.addNode(1);
         //ll.printNode();
-       ll.head= reverseNode(ll.head,4);
+       ll.head= reverseNode(ll.head,3);
        ll.printNode();
     }
 }
